@@ -45,7 +45,7 @@ main {
 }
 
 .theme {
-  min-width: 150px;
+  min-width: 130px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -53,10 +53,24 @@ main {
 }
 
 .theme span {
-  color: white;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  font-size: 0.8rem;
+   color: white;
+   font-weight: 700;
+}
+
+.theme .tm {
+  letter-spacing: 0.10em;
+  font-size: 0.7rem;
+  margin-bottom: 5px;
+}
+
+.type {
+   letter-spacing: 0.6em !important;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   margin-bottom: 5px;
+   margin-left: 6px;
+   font-size: 0.6em !important;
 }
 
 .switch {
@@ -64,29 +78,37 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* margin: auto; */
 }
 
 .switch-toggle {
-  float: left;
-  background: hsl(224, 36%, 15%);
+   float: left;
+   background: hsl(224, 36%, 15%);
+   height: 20px;
+   width: 94%;
+   border-radius: 20px;
+   padding: 0 2px;
 }
 .switch-toggle input {
   position: absolute;
   opacity: 0;
+  cursor: pointer;
 }
 .switch-toggle input + label {
-  padding: 7px;
-  float: left;
-  color: #fff;
-  cursor: pointer;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+   padding: 7px;
+   float: left;
+   color: #FFF;
+   cursor: pointer;
+   -webkit-transition: 0.4s;
+   transition: 0.4s;
+   margin: 0px 2px;
 }
 .switch-toggle input:checked + label {
-  background: hsl(6, 63%, 50%);
-  border-radius: 20px;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+   background: hsl(6, 63%, 50%);
+   border-radius: 20px;
+   -webkit-transition: 0.4s;
+   transition: 0.4s;
+   margin-top: 3px;
 }
 
 .screen {
