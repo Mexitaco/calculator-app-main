@@ -30,47 +30,48 @@
                 <span class="type">1 2 3</span>
                 <div class="switch-toggle switch-3 switch-candy">
                    
-                   <input id="on" name="state-d" type="radio" checked="" />
-                   <label for="on" onclick=""></label>
+                   <input id="on" name="state-d" type="radio" checked=""  value="normal" />
+                   <label for="on" ></label>
                    
-                   <input id="na" name="state-d" type="radio" checked="checked" />
+                   <input id="na" name="state-d" type="radio" checked="checked"  value="na"/>
                    <label for="na" class="disabled" onclick=""></label>
                    
-                   <input id="off" name="state-d" type="radio" />
+                   <input id="off" name="state-d" type="radio" value="off" />
                    <label for="off" onclick=""></label>
                    
                   </div>
                </div>
             </div>
         </div>
-        <div class="screen"></div>
+        <div id="screen" class="screen" data-value="">
+         
+        </div>
         <div class="calculator">
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button class="del">DEL</button>
+          <button type="button" data-valor="7" class="btn" value="7">7</button>
+          <button type="button" data-valor="8" class="btn" value="8">8</button>
+          <button type="button" data-valor="9" class="btn" value="9">9</button>
+          <button id="del" type="button" class="del">DEL</button>
 
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>+</button>
+          <button type="button" data-valor="4" class="btn" value="4">4</button>
+          <button type="button" data-valor="5" class="btn" value="5">5</button>
+          <button type="button" data-valor="6" class="btn" value="6">6</button>
+          <button type="button" data-valor="+" class="btn" value="+">+</button>
 
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>-</button>
+          <button type="button" data-valor="1" class="btn" value="1">1</button>
+          <button type="button" data-valor="2" class="btn" value="2">2</button>
+          <button type="button" data-valor="3" class="btn" value="3">3</button>
+          <button type="button" data-valor="-" class="btn" value="-">-</button>
 
-          <button>.</button>
-          <button>0</button>
-          <button>/</button>
-          <button>X</button>
+          <button id="punto" type="button"  class="" value=".">.</button>
+          <button type="button" data-valor="0" class="btn" value="0">0</button>
+          <button type="button" data-valor="/" class="btn" value="/">/</button>
+          <button type="button" data-valor="*" class="btn" value="x">x</button>
 
-          <button class="reset">RESET</button>
-          <button class="like">=</button>
+          <button id="res" type="button"  class="reset">RESET</button>
+          <button id="like" type="button" value="like" class="like">=</button>
         </div>
       </div>
     </main>
-<a href=""></a>
-
+    <script   src="js/calculadora.js"></script>
   </body>
 </html>
