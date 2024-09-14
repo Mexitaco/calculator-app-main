@@ -29,13 +29,24 @@ dark.addEventListener("click", function () {
 
 var screen = document.getElementById("screen"); //div de la pantalla
 var valores = []; //arreglo para los datos de la opereción
-
+var flag = null;
 let botones = document.querySelectorAll(".btn");
 botones.forEach((item, index) => {
   item.addEventListener("click", (e) => {
     const nombres = e.target.dataset["valor"];
+    if (flag == true) {
+      let kk = valores[valores.length - 1];
+      console.log(kk);
+      valores = [];
+      valores.push(kk.toString());
+
+      // console.log(valores[3]);
+    }
     valores.push(nombres);
+    console.log(valores);
+
     screen.innerHTML = valores.join("");
+    flag = false;
   });
 });
 
@@ -46,8 +57,18 @@ botones.forEach((item, index) => {
 var like = document.getElementById("like");
 like.addEventListener("click", function () {
   var resultado = evaluar(valores.join(""));
+  if (valores.length < 1) {
+    flag = false;
+    console.log("ptm");
+    
+  } else {
+    flag = true;
+  }
+
+
   if (resultado != false) {
     screen.innerHTML = resultado;
+    valores.push(resultado);
   }
 });
 
@@ -132,6 +153,8 @@ const evaluar = (expr) => {
     alert("Operación inválida");
     valores = [];
     screen.innerHTML = "";
+    console.log(error);
+    flag = false;
     return false;
   }
 };
