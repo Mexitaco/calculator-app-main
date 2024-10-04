@@ -35,12 +35,12 @@ html[data-theme="dark"] {
   --main-background: hsl(268, 75%, 9%);
   --toggle-keypad-bg: hsl(268, 71%, 12%);
   --screen-bg: hsl(268, 71%, 12%);
-  --key-bg-toggle:  hsl(281, 89%, 26%);
+  --key-bg-toggle: hsl(281, 89%, 26%);
   --key-shadow: hsl(285, 91%, 52%);
   --key-toggle-bg: hsl(176, 100%, 44%);
-  --key-shadow-2:  hsl(177, 92%, 70%);
+  --key-shadow-2: hsl(177, 92%, 70%);
   --key-bg: hsl(268, 47%, 21%);
-  --key-shadow-3:  hsl(290, 70%, 36%);
+  --key-shadow-3: hsl(290, 70%, 36%);
   --text-1: hsl(0, 0%, 100%);
   --text-2: hsl(52, 100%, 62%);
   --text-3: hsl(52, 100%, 62%);
@@ -54,6 +54,10 @@ html[data-theme="dark"] {
 
 body {
   background-color: var(--main-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  zoom: 90%;
 }
 
 main {
@@ -94,7 +98,8 @@ main {
   position: relative;
 }
 
-.theme span, h3 {
+.theme span,
+h3 {
   color: var(--text-3);
   font-weight: 700;
 }
@@ -155,13 +160,21 @@ main {
 
 .screen {
   background-color: var(--screen-bg);
-  min-height: 110px;
+  min-height: 120px;
   color: var(--text-3);
-  width: 100%;
+  width: 95%;
   border-radius: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 700;
+  word-break:break-all;
+  padding: 5px 2.5%;
 }
 
 .calculator {
+  position: relative;
   margin-top: 15px;
   border-radius: 10px;
   width: 90%;
@@ -205,7 +218,6 @@ button:hover {
 
 .reset {
   grid-area: 5 / 1 / 6 / 3;
-
 }
 
 .like {
@@ -216,4 +228,44 @@ button:hover {
   -webkit-box-shadow: inset 0 -4px 0 0 var(--key-shadow-2) !important;
   -moz-box-shadow: inset 0 -4px 0 0 var(--key-shadow-2) !important;
   box-shadow: inset 0 -4px 0 0 var(--key-shadow-2) !important;
+}
+
+.keyboard {
+  width: 5%;
+  height: 5%;
+  position: absolute;
+  top: 7px;
+  left: 4px;
+  z-index: -1;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 375px) {
+  body {
+    zoom: 100%;
+  }
+
+  .container {
+    min-width: 330px;
+    margin: auto;
+    /* height: auto;
+      margin-top: 20px; */
+  }
+
+  .screen {
+    min-height: 100px;
+  }
+
+  .calculator {
+    width: 85%;
+    grid-column-gap: 4.5%;
+    grid-row-gap: 4.5%;
+    padding: 7%;
+  }
+
+  .del,
+  .reset,
+  .like {
+    font-size: 1.2rem !important;
+  }
 }

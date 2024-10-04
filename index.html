@@ -16,7 +16,7 @@
 
     </style>
   </head>
-  <body>
+  <body id="body">
     <main>
       <div class="container">
         <div class="menu">
@@ -43,29 +43,30 @@
                </div>
             </div>
         </div>
-        <div id="screen" class="screen" data-value="">
-         
+        <div  class="screen" data-value="">
+         <span id="screen"></span>
         </div>
-        <div class="calculator">
-          <button type="button" data-valor="7" class="btn" value="7">7</button>
-          <button type="button" data-valor="8" class="btn" value="8">8</button>
-          <button type="button" data-valor="9" class="btn" value="9">9</button>
+        <div class="calculator" onchange="keyboard()">
+         <input id="keyboard" type="text" class="keyboard" onkeydown="onKeyDown(event)" autocomplete="off" autofocus>
+          <button id="val-7" type="button" data-valor="7" class="btn" value="7">7</button>
+          <button id="val-8" type="button" data-valor="8" class="btn" value="8">8</button>
+          <button id="val-9" type="button" data-valor="9" class="btn" value="9">9</button>
           <button id="del" type="button" class="del">DEL</button>
 
-          <button type="button" data-valor="4" class="btn" value="4">4</button>
-          <button type="button" data-valor="5" class="btn" value="5">5</button>
-          <button type="button" data-valor="6" class="btn" value="6">6</button>
-          <button type="button" data-valor="+" class="btn" value="+">+</button>
+          <button id="val-4" type="button" data-valor="4" class="btn" value="4">4</button>
+          <button id="val-5" type="button" data-valor="5" class="btn" value="5">5</button>
+          <button id="val-6" type="button" data-valor="6" class="btn" value="6">6</button>
+          <button id="val-+" type="button" data-valor="+" class="btn" value="+">+</button>
 
-          <button type="button" data-valor="1" class="btn" value="1">1</button>
-          <button type="button" data-valor="2" class="btn" value="2">2</button>
-          <button type="button" data-valor="3" class="btn" value="3">3</button>
-          <button type="button" data-valor="-" class="btn" value="-">-</button>
+          <button id="val-1" type="button" data-valor="1" class="btn" value="1">1</button>
+          <button id="val-2" type="button" data-valor="2" class="btn" value="2">2</button>
+          <button id="val-3" type="button" data-valor="3" class="btn" value="3">3</button>
+          <button id="val--" type="button" data-valor="-" class="btn" value="-">-</button>
 
           <button id="punto" type="button"  class="" value=".">.</button>
-          <button type="button" data-valor="0" class="btn" value="0">0</button>
-          <button type="button" data-valor="/" class="btn" value="/">/</button>
-          <button type="button" data-valor="*" class="btn" value="x">x</button>
+          <button id="val-0" type="button" data-valor="0" class="btn" value="0">0</button>
+          <button id="val-/" type="button" data-valor="/" class="btn" value="/">/</button>
+          <button id="val-x" type="button" data-valor="*" class="btn" value="x">x</button>
 
           <button id="res" type="button"  class="reset">RESET</button>
           <button id="like" type="button" value="like" class="like">=</button>
