@@ -26,20 +26,29 @@ dark.addEventListener("click", function () {
 /**
  * añadir valores de los botones a screen
  */
-
+var resultado = null;
 var screen = document.getElementById("screen"); //div de la pantalla
 var valores = []; //arreglo para los datos de la opereción
 var flag = null;
+var flag_del = null;
 let botones = document.querySelectorAll(".btn");
 botones.forEach((item, index) => {
   keyboard();
   item.addEventListener("click", (e) => {
     const nombres = e.target.dataset["valor"];
+
     if (flag == true) {
-      let kk = valores[valores.length - 1];
-      console.log(kk);
-      valores = [];
-      valores.push(kk.toString());
+      var val = valores[valores.length - 1];
+      console.log(val);
+      console.log(valores);
+    
+
+      // if (document.getElementById("del").onclick) {
+      //    valores.pop();
+      // } else {
+      // }
+         valores = [];
+      valores.push(val.toString());
 
       // console.log(valores[3]);
     }
@@ -58,7 +67,7 @@ botones.forEach((item, index) => {
 
 var like = document.getElementById("like");
 like.addEventListener("click", function () {
-  const resultado = calcular(valores.join(""));
+  resultado = calcular(valores.join(""));
   if (valores.length < 1) {
     flag = false;
     valores = [];
@@ -101,157 +110,19 @@ var res = document.getElementById("res");
 res.addEventListener("click", function () {
   screen.innerHTML = "";
   valores = [];
+  resultado = null;
 });
 
 /**
  * realización de la operación
  */
 
-const evaluar = (expr) => {
-  var formato = "";
-  var tipo = "";
-  var flag_kk = false;
-  var flag_menor = 2;
-  if (
-    expr.includes("+") &&
-    (!expr.includes("-") || !expr.includes("*") || !expr.includes("/"))
-  ) {
-    formato = /((?:\d+)?\d+(?:\.\d+)?)\+(\d+(?:\.\d+)?)/;
-    tipo = "+";
-  }
-
-  if (expr.includes("-")) {
-    formato = /((?:\-\d+)?\d+(?:\.\d+)?)\-(\d+(?:\.\d+)?)/;
-    tipo = "-";
-  }
-
-  /*     if (/((?:\-\d+)?\d+(?:\.\d+)?)\-(\d+(?:\.\d+)?)/.test(expr)) {
-      formato = /((?:\-\d+)?\d+(?:\.\d+)?)\-(\d+(?:\.\d+)?)/;
-      tipo = "+";
-      console.log(expr);
-    } */
-
-  if (expr.includes("-") && expr.includes("+")) {
-    formato = /-?\d+\s*[\+\-*/]\s*-?\d+/;
-    tipo = "-+";
-    console.log("menor y mas");
-  }
-
-  if (
-    /((?:\-\d+)?\d+(?:\.\d+)?)\-(\d+(?:\.\d+)?)/.test(expr) &&
-    !expr.includes("+")
-  ) {
-    formato = /((?:\-\d+)?\d+(?:\.\d+)?)\+(\d+(?:\.\d+)?)/;
-    tipo = "--";
-  }
-
-  if (expr.includes("*")) {
-    formato = /((?:\-\d+)?\d+(?:\.\d+)?)\*(\d+(?:\.\d+)?)/;
-    tipo = "*";
-  }
-
-  if (expr.includes("/")) {
-    formato = /((?:\-\d+)?\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)/;
-    tipo = "/";
-  }
-  try {
-    /*  if (
-      expr.includes("-") &&
-      (expr.includes("+") ||
-        expr.includes("*") ||
-        expr.includes("/") ||
-        expr.includes("-"))
-    ) {
-      flag_menor = true;
-      let arg = expr.split("");
-      arg.shift();
-      expr = arg.join("");
-    } else {
-      console.log("tmre");
-      
-      flag_menor = false;
-    } */
-
-    if (isNaN(Number(expr))) {
-      var operar = null;
-      if (formato.test(expr)) {
-        operar = expr.replace(formato, (operador, a, b) => {
-          //  if (tipo == "+" && flag_menor == true) {
-          //    console.log("wrf");
-          //    return Number(-a) + Number(b);
-          //  }
-          if (tipo == "+") {
-            flag_menor = false;
-            return Number(a) + Number(b);
-          }
-
-          if (tipo == "-+") {
-            console.log(operador);
-
-            console.log(Number(a));
-            console.log(Number(b));
-            console.log(Number(a) + Number(b));
-            flag_kk = true;
-            return Number(a) + Number(b);
-          }
-
-          if (tipo == "-") {
-            flag_menor = false;
-
-            console.log(a);
-            console.log(b);
-            return Number(a) - Number(b);
-          }
-
-          if (tipo == "--") {
-            flag_menor = false;
-
-            console.log(a);
-            console.log(b);
-            return Number(-a) + Number(-b);
-          }
-
-          //  if (tipo == "*" && flag_menor == true) {
-          //    return Number(-a) * Number(b);
-          //  }
-
-          if (tipo == "*") {
-            flag_menor = false;
-            return Number(a) * Number(b);
-          }
-
-          //  if (tipo == "/" && flag_menor == true) {
-          //    return Number(-a) / Number(b);
-          //  }
-
-          if (tipo == "/") {
-            flag_menor = false;
-            return Number(a) / Number(b);
-          }
-        });
-      }
-      console.log(operar);
-
-      return Number(evaluar(operar));
-    }
-    console.log(expr);
-
-    return Number(expr);
-  } catch (error) {
-    alert("Operación inválida");
-    valores = [];
-    screen.innerHTML = "";
-    console.log(error);
-    flag = false;
-    return false;
-  }
-};
 
 function calcular(expresion) {
   // Expresión regular para identificar la operación
   //const regex = /(-?\d+)\s*([\+\-*/])\s*(-?\d+)/;
-  const regex =
-    /((?:\-?\d+)?\d+(?:\.\d+)?)\s*([\+\-*/])\s*((?:\-?\d+)?\d+(?:\.\d+)?)/;
+ // const regex = /((?:\-?\d+)?\d+(?:\.\d+)?)\s*([\+\-*\/])\s*((?:\-?\d+)?\d+(?:\.\d+)?)/;
+  const regex = /(-?(?:\\d+)?\d+(?:\.\d+)?)\s*([\+\-*\/])\s*((?:\-?\d+)?\d+(?:\.\d+)?)/;
   //formato = /((?:\-?\d+)?\d+(?:\.\d+)?)\s*([\+\-*/])\s*(-?\d+)(\d+(?:\.\d+)?)/;
   const match = expresion.match(regex);
   if (!match) {
@@ -261,7 +132,10 @@ function calcular(expresion) {
   const num1 = parseFloat(match[1]);
   const operador = match[2];
   const num2 = parseFloat(match[3]);
-
+console.log(num1);
+console.log(operador);
+console.log(num2);
+  
   switch (operador) {
     case "+":
       return num1 + num2;
